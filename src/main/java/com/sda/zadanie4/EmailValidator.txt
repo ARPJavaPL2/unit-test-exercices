@@ -1,0 +1,9 @@
+
+
+Zaimplementuj methode walidujaca email zgodnie z TDD:
+
+Sprawdzić czy:
+- nie jest pusty
+- zawiera „@”
+- zaczyna się od przynajmniej dwóch znaków
+- kończy na „.com”
