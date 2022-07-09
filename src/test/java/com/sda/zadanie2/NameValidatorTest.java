@@ -1,6 +1,9 @@
 package com.sda.zadanie2;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -57,5 +60,29 @@ class NameValidatorTest {
         Assertions.assertFalse(valid);
     }
 
+
+    @ParameterizedTest
+    @ValueSource(strings = { "Michel", "Suzi", "Bob"})
+    @DisplayName("Should return true happy path")
+    void shouldReturnTrueParametrized(String name) {
+
+        // when
+        boolean valid = nameValidator.isNameValid(name);
+
+        // then
+        Assertions.assertTrue(valid);
+    }
+
+    @ParameterizedTest
+    @NullSource
+    @ValueSource(strings = { "M", "u", "bob", "MICHEL", ""})
+    @DisplayName("Should return false if name s null")
+    void shouldReturnFalseIfNameNullParametrized(String name) {
+        // when
+        boolean valid = nameValidator.isNameValid(name);
+
+        // then
+        Assertions.assertFalse(valid);
+    }
 
 }
